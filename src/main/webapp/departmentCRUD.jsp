@@ -42,7 +42,7 @@
 				build_page_nav(result);
 			},
 			error : function() {
-				alert("fucking fucked");
+				alert("获取部门列表失败");
 			}
 		});
 	}
@@ -51,7 +51,7 @@
 		var deps = result.extend.pageInfo.list;
 
 		$.each(deps, function(index, name) {
-			var depName = $("<td></td>").append(name.depName);
+			var depName = $("<td width='600px'></td>").append(name.depName);
 
 			var editBtn = $("<button></button>").addClass(
 					"btn btn-primary btn-sm edit_btn").append(
@@ -176,8 +176,6 @@
 		</div>
 	</div>
 
-
-
 	<!-- 部门添加的模态框 -->
 	<div class="modal fade" id="depAddModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
@@ -208,7 +206,6 @@
 		</div>
 	</div>
 
-
 	<!-- 搭建显示页面 -->
 	<div class="container">
 		<!-- 标题 -->
@@ -220,6 +217,7 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-8">
 				<button class="btn btn-primary" id="dep_add_modal_btn">新增</button>
+				<button class="btn btn-primary" id="dep_pull_out_btn">导出</button>
 			</div>
 		</div>
 		<!-- 显示表格数据 -->
@@ -228,7 +226,8 @@
 				<table class="table table-hover" id="deps_table">
 					<thead>
 						<tr>
-							<th>名称</th>
+						<th>名称</th>
+						<th>操作</th>
 						</tr>
 					</thead>
 					<tbody></tbody>
@@ -236,7 +235,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="color:grey;position:fixed;bottom:0px;left:200px;width:100%;">
 		<div class="col-md-6" id="page_info_area"></div>
 		<div class="col-md-6" id="page_nav_area"></div>
 	</div>
@@ -325,6 +324,9 @@
 
 			});
 		});
+		$("#pull_out_btn").click(function() {
+			 location.href="pullOutDeps";
+		});
 		function validate_add_form() {
 			//1、拿到要校验的数据，使用正则表达式
 			var name = $("#name_add_input").val();
@@ -350,6 +352,7 @@
 				$(ele).next("span").text(msg);
 			}
 		}
+		
 	</script>
 </body>
 </html>

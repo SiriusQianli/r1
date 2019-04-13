@@ -1,7 +1,11 @@
 package com.init.crud.controller;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -85,4 +89,9 @@ public class DepartmentController {
 		Department department=departmentService.getDep1(id);
 		return Msg.success().add("dep", department);
 	}
+	 @RequestMapping(value = "/pullOutDeps")  
+	    public void exportExcel(HttpServletRequest request, HttpServletResponse response)   
+	    throws Exception {  
+	        
+	   }  
 }

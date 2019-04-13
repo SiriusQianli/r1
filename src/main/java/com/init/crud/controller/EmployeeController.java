@@ -1,11 +1,18 @@
 package com.init.crud.controller;
 
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -68,4 +75,19 @@ public class EmployeeController {
 		else
 			return Msg.fail();
 	}
+	@RequestMapping(value = "/pullOutEmps", method={RequestMethod.POST,RequestMethod.GET})  
+    public void exportExcel(HttpServletRequest request, HttpServletResponse response)   
+    throws Exception {  
+          
+        List<Employee> list = new ArrayList<Employee>();  
+        list=employeeService.getAll(); 
+        HSSFWorkbook wb = employeeService.export(list);  
+        response.setContentType("application/vnd.ms-excel");  
+        response.setHeader("Content-disposition", "attachment;filename=employees.xls");  
+        OutputStream ouputStream = response.getOutputStream();  
+        wb.write(ouputStream);  
+        ouputStream.flush();  
+        ouputStream.close();  
+   }  
+
 }

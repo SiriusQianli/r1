@@ -26,7 +26,10 @@ import com.init.crud.bean.Mark;
 @WebAppConfiguration
 @ContextConfiguration(locations={"classpath:applicationContext.xml","file:src/main/webapp/WEB-INF/dispatcherServlet-servlet.xml"})
 public class MvcTest {
-	
+	/**
+	 * (1)首先自己创建相应的控制器，注入相应的依赖
+     * (2)通过MockMvcBuilders.standaloneSetup模拟一个Mvc测试环境，通过build得到一个MockMvc
+	 */
 	@Autowired
 	WebApplicationContext context;
 	

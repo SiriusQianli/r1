@@ -306,7 +306,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="color:grey;position:fixed;bottom:-20px;left:200px;width:100%;">
 		<div class="col-md-6" id="page_info_area"></div>
 		<div class="col-md-6" id="page_nav_area"></div>
 	</div>

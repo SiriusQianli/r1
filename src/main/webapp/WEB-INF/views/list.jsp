@@ -18,6 +18,7 @@
 	rel="stylesheet">
 <script
 	src="${APP_PATH }/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -131,6 +132,7 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-8">
 				<button class="btn btn-primary" id="emp_add_modal_btn">新增</button>
+				<button class="btn btn-primary" id="emp_pull_out_btn">导出</button>
 				<!-- <button class="btn btn-danger">删除</button> -->
 			</div>
 		</div>
@@ -139,10 +141,10 @@
 			<div class="col-md-12">
 				<table class="table table-hover">
 					<tr>
-						<th>#</th>
-						<th>empName</th>
-						<th>empPosition</th>
-						<th>deptName</th>
+						<th>工号</th>
+						<th>姓名</th>
+						<th>职位</th>
+						<th>部门</th>
 						<th>操作</th>
 					</tr>
 					<c:forEach items="${pageInfo.list}" var="emp">
@@ -170,12 +172,12 @@
 		</div>
 
 		<!-- 显示分页信息 -->
-		<div class="row">
+		<div class="row" style="color:grey;position:fixed;bottom:20px;left:200px;width:100%;">
 			<!--分页文字信息  -->
-			<div class="col-md-6">当前 ${pageInfo.pageNum }页,总${pageInfo.pages }
-				页,总 ${pageInfo.total } 条记录</div>
+			<div class="col-md-4">当前 ${pageInfo.pageNum}页,总${pageInfo.pages}
+				页,总 ${pageInfo.total}条记录</div>
 			<!-- 分页条信息 -->
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<nav aria-label="Page navigation">
 				<ul class="pagination">
 					<li><a href="${APP_PATH }/emps?pn=1">首页</a></li>
@@ -240,6 +242,9 @@
 				$("#empUpdateModal").modal("hide");
 			}
 		});
+	});
+	$("#emp_pull_out_btn").click(function() {
+		location.href="${APP_PATH}/pullOutEmps";
 	});
 	function reset_form(ele) {
 		$(ele)[0].reset();

@@ -97,23 +97,23 @@
 			<p>MainPage</p>
 		</div>
 		<div class="tab-pane fade" id="main">
-			<iframe src="index4.jsp" width="100%" frameborder="0" height="800"></iframe>
+			<iframe src="gradeList.jsp" width="100%" frameborder="0" height="800"></iframe>
 
 		</div>
 		<div class="tab-pane fade" id="mark">
-			<iframe src="index.jsp" width="100%" frameborder="0" height="800"
+			<iframe src="markOnline.jsp" width="100%" frameborder="0" height="800"
 				onload="this.height=Info1.document.body.scrollHeight"></iframe>
 
 		</div>
 		<div class="tab-pane fade" id="employee">
-			<iframe src="index2.jsp" width="100%" frameborder="0" height="800"
+			<iframe src="empCRUD.jsp" width="100%" frameborder="0" height="800"
 				onload="this.height=Info1.document.body.scrollHeight"></iframe>
 		</div>
 		<div class="tab-pane fade" id="marks">
-			<iframe src="index3.jsp" width="100%" frameborder="0" height="800"></iframe>
+			<iframe src="markCRUD.jsp" width="100%" frameborder="0" height="800"></iframe>
 		</div>
 		<div class="tab-pane fade" id="department">
-			<iframe src="index5.jsp" width="100%" frameborder="0" height="800"></iframe>
+			<iframe src="departmentCRUD.jsp" width="100%" frameborder="0" height="800"></iframe>
 		</div>
 				<div class="tab-pane fade" id="item">
 			<iframe src="itemCRUD.jsp" width="100%" frameborder="0" height="800"></iframe>

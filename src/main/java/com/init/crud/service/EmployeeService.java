@@ -4,6 +4,11 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +24,8 @@ public class EmployeeService {
 	
 	@Autowired
 	EmployeeMapper employeeMapper;
-
+	
+	 String[] excelHeader = { "工号", "姓名", "所在部门","密码"};
 	public List<Employee> getAll() {
 		return employeeMapper.selectByExample(null);
 	}
@@ -74,6 +80,32 @@ public class EmployeeService {
 			return employee;
 		}
 		return null;
+	}
+
+	public HSSFWorkbook export(List<Employee> list) {
+		HSSFWorkbook wb = new HSSFWorkbook();  
+        HSSFSheet sheet = wb.createSheet("Campaign");  
+        HSSFRow row = sheet.createRow((int) 0);  
+        HSSFCellStyle style = wb.createCellStyle();  
+        //style.setAlignment(HSSFCellStyle.ALIGN_CENTER);  
+  
+        for (int i = 0; i < excelHeader.length; i++) {  
+            HSSFCell cell = row.createCell(i);  
+            cell.setCellValue(excelHeader[i]);  
+            cell.setCellStyle(style);  
+            sheet.autoSizeColumn(i);  
+        }  
+  
+        for (int i = 0; i < list.size(); i++) {  
+            row = sheet.createRow(i + 1);  
+            Employee emp = list.get(i);  
+            row.createCell(0).setCellValue(emp.getEmpId());  
+            row.createCell(1).setCellValue(emp.getEmpName());  
+            row.createCell(2).setCellValue(emp.getEmpDepartment());  
+            row.createCell(3).setCellValue(emp.getEmpPassword());  
+        }  
+        return wb;  
+
 	}
 	
 
